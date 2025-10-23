@@ -1,8 +1,9 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "composite": false,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
   "include": ["src"]
 }
