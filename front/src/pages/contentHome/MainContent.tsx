@@ -4,22 +4,20 @@ import SingerList from "../../components/artist/SingerList.tsx";
 import TopAlbums from "../../components/TopAlbums.tsx";
 import MoodPlaylist from "../../components/mood-playlist/MoodPlaylist.tsx";
 
+
 function MainContent() {
     return (
         <div className="px-[80px] flex-col flex pt-[48px] justify-start items-start box-border relative">
 
-            {/* ✨ CHANGE: Added 'hidden xl:block' to the image's container */}
-            <div className="relative hidden xl:block">
+            {<div className="relative hidden xl:block">
                 <img
                     src="/assets/img/girl.png"
                     className="rounded-[40px] w-full max-w-[1550px] h-[550px] object-cover mx-auto"
                 />
-            </div>
+            </div>}
 
             <Header/>
-
-            {/* ✨ CHANGE: Added 'hidden xl:block' to the text block's container */}
-            <div className="absolute z-1 pt-[148px] px-[55px] hidden xl:block">
+            {<div className="absolute z-1 pt-[148px] px-[55px] hidden xl:block">
                 <div className="w-[352px] h-[146px] flex flex-col p-[10px]">
                     <h2 className="w-[410px] h-[156px] font-vazirmatn text-[45px] font-extrabold pb-[36px] text-left text-white">
                         All the <span className="text-[#EE10B0]">Best Songs</span><br/>
@@ -45,7 +43,9 @@ function MainContent() {
                 </div>
             </div>
 
-            <div className="lg:pt-[74px] pt-[150px] md:pt-[150px] w-full">
+}
+
+            <div className="lg:pt-[174px] pt-[150px] md:pt-[150px] w-full">
                 <p className="w-[265px] h-[50px] font-vazirmatn text-[32px] text-white font-[700] text-left">
                     Trending <span className="text-[#EE10B0]">Songs</span>
                 </p>
@@ -58,6 +58,7 @@ function MainContent() {
                     Popular <span className="text-[#EE10B0]">Artist</span>
                 </p>
             </div>
+
             <SingerList/>
 
             <div className="pt-[74px] w-full">
@@ -66,13 +67,16 @@ function MainContent() {
                 </p>
             </div>
             <TopAlbums/>
-
-            <div className="pt-[74px] w-full">
-                <p className="w-[265px] h-[50px] font-vazirmatn text-[32px] text-white font-[700] text-left">
-                    Mood <span className="text-[#EE10B0]">PlayList</span>
-                </p>
-            </div>
-            <MoodPlaylist/>
+            {
+                <>
+                    <div className="pt-[74px] w-full">
+                        <p className="w-[265px] h-[50px] font-vazirmatn text-[32px] text-white font-[700] text-left">
+                            Mood <span className="text-[#EE10B0]">PlayList</span>
+                        </p>
+                    </div>
+                    <MoodPlaylist />
+                </>
+            }
         </div>
     );
 }

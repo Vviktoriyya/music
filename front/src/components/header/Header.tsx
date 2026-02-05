@@ -38,9 +38,9 @@ export default function Header() {
                 <h1 className="font-vazirmatn text-[32px] font-extrabold text-center whitespace-nowrap xl:hidden">
                     <span className="text-blue-500">Home</span> <span className="text-[#EE10B0]">page</span>
                 </h1>
-                <div className="hidden xl:flex items-center gap-10">
+                {/*  <div className="hidden xl:flex items-center gap-10">
                     <a
-                        href="https://github.com/Vviktoriyya"
+                        //href="#"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-white cursor-pointer font-vazirmatn text-[20px] font-[500] whitespace-nowrap"
@@ -48,7 +48,7 @@ export default function Header() {
                         About Us
                     </a>
                     <a
-                        href="https://github.com/Vviktoriyya"
+                        //href="#"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-white cursor-pointer font-vazirmatn text-[20px] font-[500] whitespace-nowrap"
@@ -56,7 +56,7 @@ export default function Header() {
                         Contact
                     </a>
                 </div>
-
+*/}
 
                 <div className="hidden xl:flex items-center shrink-0">
                     {session ? (

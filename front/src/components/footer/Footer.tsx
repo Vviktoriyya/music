@@ -3,7 +3,6 @@ const Footer = () => {
         <footer className="mx-auto max-w-[1450px] w-full items-center flex flex-col lg:flex-row gap-10 lg:gap-[35px] justify-between px-5 md:px-10 lg:px-20 bg-[#181818] pt-10 lg:pt-[50px] pb-10 lg:pb-[35px] border-t-4 border-black mt-10 lg:mt-[50px]"
                 style={{ boxShadow: '0 -10px 20px rgba(0,0,0,0.8)' }}>
 
-            {/* About */}
             <div className="flex flex-col justify-center lg:w-[350px]">
                 <h1 className="text-white font-[Vazirmatn] text-[20px] md:text-[26px] font-black leading-[100%] tracking-[1%] mb-3">
                     About
@@ -13,9 +12,7 @@ const Footer = () => {
                 </p>
             </div>
 
-            {/* Links */}
             <div className="flex flex-col sm:flex-row gap-10 lg:gap-[22px] mt-10 lg:mt-0">
-                {/* Column 1 */}
                 <div className="flex flex-col items-center sm:items-start">
                     <p className="text-white font-[Vazirmatn] text-[20px] md:text-[24px] font-bold mb-2">Melodies</p>
                     <p className="border-b-[3px] border-white w-[120px] mb-4"></p>
@@ -26,7 +23,6 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Column 2 */}
                 <div className="flex flex-col items-center sm:items-start">
                     <p className="text-white font-[Vazirmatn] text-[20px] md:text-[24px] font-bold mb-2">Access</p>
                     <p className="border-b-[3px] border-white w-[120px] mb-4"></p>
@@ -39,7 +35,6 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Column 3 */}
                 <div className="flex flex-col items-center sm:items-start">
                     <p className="text-white font-[Vazirmatn] text-[20px] md:text-[24px] font-bold mb-2">Contact</p>
                     <p className="border-b-[3px] border-white w-[120px] mb-4"></p>
@@ -52,7 +47,6 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Logo & social */}
             <div className="flex flex-col items-center mt-10 lg:mt-0 gap-5">
                 <h1 className="text-[32px] md:text-[40px] font-extrabold w-[140px] md:w-[174px] text-left bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent font-vazirmatn">
                     Melodies
