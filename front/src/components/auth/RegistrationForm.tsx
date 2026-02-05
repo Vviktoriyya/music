@@ -2,7 +2,7 @@ import { type FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { supabase } from "../../lib/superbaseClient";
+import { supabase } from "../../lib/supabaseClient.ts";
 import logoAuth from "/assets/img/logoAuth.png";
 import { useAuth } from "../../context/AuthContext";
 

@@ -1,7 +1,7 @@
 
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from "../../context/AuthContext.tsx";
-import { supabase } from "../../lib/superbaseClient.ts";
+import { supabase } from "../../lib/supabaseClient.ts";
 
 interface SidebarProps {
     onLinkClick?: () => void;

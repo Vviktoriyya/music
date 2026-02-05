@@ -1,7 +1,7 @@
 import { createContext, type ReactNode, useState, useEffect } from "react";
 import type { Track } from "../../../types/track.ts";
 import { useAuth } from "../../../context/AuthContext.tsx";
-import { supabase } from "../../../lib/superbaseClient.ts";
+import { supabase } from "../../../lib/supabaseClient.ts";
 
 interface FavoritesContextType {
     favorites: Track[];

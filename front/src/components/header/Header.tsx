@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Search from "../search/Search.tsx";
 import AuthModal from "../auth/AuthModal.tsx";
 import { useAuth } from "../../context/AuthContext";
-import { supabase } from "../../lib/superbaseClient";
+import { supabase } from "../../lib/supabaseClient.ts";
 import userIcon from "/assets/icon/user.png";
 import BurgerMenu from "../burger-menu/BurgerMenu.tsx";
 

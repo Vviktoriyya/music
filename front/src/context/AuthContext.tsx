@@ -7,7 +7,7 @@ import {
 } from 'react';
 
 import type { Session } from '@supabase/supabase-js';
-import {supabase} from "../lib/superbaseClient.ts";
+import {supabase} from "../lib/supabaseClient.ts";
 
 interface AuthContextType {
     session: Session | null;
