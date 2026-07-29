@@ -4,7 +4,13 @@ import cors from "cors";
 import NodeCache from "node-cache";
 const app = express();
 const PORT = process.env.PORT || 5000;
-app.use(cors());
+app.use(cors({
+    origin: [
+        "https://music-henna-gamma.vercel.app",
+        "https://music-git-main-vviktoriyyas-projects.vercel.app"
+    ],
+    credentials: true
+}));
 const myCache = new NodeCache({ stdTTL: 3600 });
 app.get("/api/trending", async (req, res) => {
     const limit = Number(req.query.limit) || 20;
