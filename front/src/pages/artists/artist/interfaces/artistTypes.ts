@@ -1,5 +1,3 @@
-
-
 export interface Artist {
     id: number;
     name: string;
@@ -7,7 +5,6 @@ export interface Artist {
     picture_big?: string;
     picture_xl?: string;
 }
-
 export interface TopTrack {
     id: number;
     name: string;
@@ -19,7 +16,6 @@ export interface TopTrack {
     duration?: number | null;
     preview?: string | null;
 }
-
 export interface ArtistAlbum {
     id: number;
     title: string;

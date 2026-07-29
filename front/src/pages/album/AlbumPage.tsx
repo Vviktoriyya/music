@@ -4,13 +4,11 @@ import TrackModal from "../../components/TrackModal.tsx";
 import type { AlbumData, Track as AlbumTrack } from "./interfaces/AlbumInfo";
 import type { Track as AppTrack } from "../../types/track";
 import { fetchAlbum } from "./services/albumService";
-
 export default function RandomAlbum() {
     const [album, setAlbum] = useState<AlbumData | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [selectedTrack, setSelectedTrack] = useState<AppTrack | null>(null);
-
     const loadRandomAlbum = useCallback(async () => {
         try {
             setLoading(true);
@@ -24,18 +22,15 @@ export default function RandomAlbum() {
             setLoading(false);
         }
     }, []);
-
     useEffect(() => {
         void loadRandomAlbum();
     }, [loadRandomAlbum]);
-
     const formatDuration = (seconds?: number) => {
         if (seconds === undefined || seconds === null) return "—";
         const min = Math.floor(seconds / 60);
         const sec = seconds % 60;
         return `${min}:${sec.toString().padStart(2, "0")}`;
     };
-
     const formatReleaseDate = (date?: string | null) => {
         if (!date) return "—";
         const d = new Date(date);
@@ -45,11 +40,9 @@ export default function RandomAlbum() {
         const year = d.getFullYear();
         return `${day}.${month}.${year}`;
     };
-
     const mapToAppTrack = (t: AlbumTrack): AppTrack => {
         const albumCover: string = album?.cover_xl ?? album?.cover_big ?? "";
         const albumReleaseDate: string = album?.release_date ?? "";
-
         return {
             id: t.id,
             title: t.title,
@@ -73,19 +66,15 @@ export default function RandomAlbum() {
             preview: t.preview ?? null,
         } as const;
     };
-
     if (loading) return <p className="text-center mt-10">Loading...</p>;
     if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
     if (!album) return <p className="text-center mt-10">Album not found</p>;
-
     return (
         <div className="relative min-h-screen text-white overflow-hidden bg-[#0f0f0f]">
-
             {/* ✅ HEADER: ВИСОКИЙ Z-INDEX */}
             <div className="relative z-20">
                 <Header />
             </div>
-
             {/* ✅ ЗОВНІШНІЙ ГРАДІЄНТ: НА ВСЮ ВИСОТУ І ПОВНІСТЮ ПОЗАДУ */}
             <div
                 className="absolute inset-0 w-full h-full z-0"
@@ -96,14 +85,11 @@ export default function RandomAlbum() {
                     zIndex: 0,
                 }}
             ></div>
-
             {/* MAIN: Відносний, вищий z-index за фон, нижчий за Header */}
             <main className="relative z-10 w-full mx-auto px-4 pt-[110px] flex flex-col justify-center items-center">
-
                 {/* БЛОК ВМІСТУ АЛЬБОМУ: Тепер просто має темний фон і займає повну ширину (відносно main) */}
                 <div
                     className="rounded-[10px] p-8 w-full flex flex-col items-center"
-                    // bg-[rgba(30,30,30,0.8)] для візуального відділення від градієнта
                 >
                     <img
                         src={album.cover_xl || album.cover_big}
@@ -114,7 +100,6 @@ export default function RandomAlbum() {
                     <p className="text-lg text-gray-300 mb-4">
                         {album.artist.name} • {formatReleaseDate(album.release_date)}
                     </p>
-
                     <button
                         onClick={loadRandomAlbum}
                         className="relative inline-block px-10 py-3 mb-8 font-bold text-zinc-300 border-2 border-fuchsia-600 rounded-xl transition-all duration-300 ease-in-out overflow-hidden shadow-[0_0_15px_rgba(217,70,239,0.5)]"
@@ -138,10 +123,7 @@ export default function RandomAlbum() {
                             Generate Another Album
                         </span>
                     </button>
-
-
                     <div className="w-full flex flex-col">
-
                         <div className="flex flex-col gap-2 w-full">
                             <div className="flex w-full text-left text-white font-semibold px-4 py-2 ">
                                 <div className="w-[50px]"></div>
@@ -150,19 +132,15 @@ export default function RandomAlbum() {
                                 <div className="w-[150px]">Release Date</div>
                                 <div className="w-[80px]">Time</div>
                             </div>
-
-
                             {album.tracks.data.map((track, idx) => (
                                 <div
                                     key={track.id}
                                     onClick={() => setSelectedTrack(mapToAppTrack(track))}
                                     className="flex w-full items-center gap-2 cursor-pointer transition-colors duration-300 rounded-[5px] px-4"
                                 >
-
                                     <div className="w-[50px] text-center text-[24px] font-semibold leading-[100%] tracking-[0%] text-white font-[Vazirmatn]">
                                         {idx + 1}
                                     </div>
-
                                     <div
                                         className="flex flex-1 items-center gap-2 bg-[rgba(30,30,30,1)] hover:bg-[rgba(50,50,50,1)] rounded-[5px] py-2"
                                     >
@@ -181,14 +159,10 @@ export default function RandomAlbum() {
                                 </div>
                             ))}
                         </div>
-
                         {selectedTrack && (
                             <TrackModal track={selectedTrack} onClose={() => setSelectedTrack(null)} />
                         )}
                     </div>
-
-
-
                 </div>
             </main>
         </div>

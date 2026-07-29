@@ -2,7 +2,6 @@ export interface Artist {
     name: string;
     id: number;
 }
-
 export interface Track {
     id: number;
     title: string;
@@ -12,7 +11,6 @@ export interface Track {
     rank?: number;
     releaseDate?: string | null;
 }
-
 export interface AlbumData {
     id: number;
     title: string;

@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { type Artist, getTopArtists } from "../../service/singerService";
 import { useNavigate } from "react-router-dom";
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-
 const SingerList: React.FC = () => {
     const [artists, setArtists] = useState<Artist[]>([]);
     const [showAll, setShowAll] = useState(false);
-
     const navigate = useNavigate();
-
     useEffect(() => {
         getTopArtists().then(setArtists);
     }, []);
-
     const firstEight = artists.slice(0, 8);
     const remaining = artists.slice(8);
-
     const ArtistCard = ({ artist }: { artist: Artist }) => (
         <div
             className="flex flex-col justify-start  items-center gap-[23px] w-full h-[200px] cursor-pointer"
@@ -31,7 +25,6 @@ const SingerList: React.FC = () => {
             </p>
         </div>
     );
-
     const chunkArray = (arr: Artist[], chunkSize: number) => {
         const chunks = [];
         for (let i = 0; i < arr.length; i += chunkSize) {
@@ -39,9 +32,7 @@ const SingerList: React.FC = () => {
         }
         return chunks;
     };
-
     const remainingChunks = chunkArray(remaining, 8);
-
     return (
         <div className="flex flex-col w-full">
             <div className="hidden xl:flex flex-col justify-center items-start ">
@@ -58,7 +49,6 @@ const SingerList: React.FC = () => {
                         </div>
                     )}
                 </div>
-
                 {showAll && remainingChunks.map((chunk, index) => (
                     <div key={index} className="flex flex-row gap-[35px] justify-start">
                         {chunk.map((artist) => (
@@ -66,7 +56,6 @@ const SingerList: React.FC = () => {
                         ))}
                     </div>
                 ))}
-
                 {showAll && (
                     <div className="mt-4 flex justify-center w-full">
                         <button onClick={() => setShowAll(false)} className="px-6 py-2 rounded-lg cursor-pointer text-white font-bold bg-gradient-to-r from-pink-500 to-purple-500 hover:scale-105 transition">
@@ -75,7 +64,6 @@ const SingerList: React.FC = () => {
                     </div>
                 )}
             </div>
-
             <div className="xl:hidden">
                 <Swiper
                     slidesPerView={'auto'}
@@ -92,5 +80,4 @@ const SingerList: React.FC = () => {
         </div>
     );
 };
-
 export default SingerList;

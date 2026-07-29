@@ -1,44 +1,37 @@
-// src/components/burger-menu/BurgerMenu.tsx
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { X, Menu } from "lucide-react";
 import Sidebar from "../side-bar/Sidebar.tsx";
 import AuthModal from "../auth/AuthModal.tsx";
 import { useAuth } from "../../context/AuthContext.tsx";
-
 export default function BurgerMenu() {
     const [isOpen, setOpen] = useState(false);
     const [isModalOpen, setModalOpen] = useState(false);
     const [authType, setAuthType] = useState<"login" | "signup">("login");
     const { session } = useAuth();
-
     const handleCloseMenu = () => setOpen(false);
-
-    if (typeof window !== 'undefined') {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    }
-
+    useEffect(() => {
+        if (typeof window === "undefined") return undefined;
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = isOpen ? "hidden" : "auto";
+        return () => {
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [isOpen]);
     return (
         <>
-            <button onClick={() => setOpen(true)} className="text-[#EE10B0] z-40 pr-[70px]">
+            <button onClick={() => setOpen(true)} className="z-40 text-[#EE10B0]">
                 <Menu size={28} />
             </button>
-
             {isOpen && (
                 <div
                     onClick={handleCloseMenu}
                     className="fixed inset-0 bg-black/60 z-40 backdrop-blur-sm"
                 ></div>
             )}
-
             <div
                 className={`fixed top-0 left-0 h-screen bg-[#181818] z-50 overflow-y-auto 
                            transition-transform duration-300 ease-in-out 
-                           w-[300px] 
+                           w-[min(82vw,320px)] 
                            ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
             >
                 <div className="flex justify-between items-center p-6 border-b border-gray-800">
@@ -49,10 +42,8 @@ export default function BurgerMenu() {
                         <X size={30} />
                     </button>
                 </div>
-
                 <div className="p-2">
                     <Sidebar onLinkClick={handleCloseMenu} />
-
                     {!session && (
                         <div className="flex flex-col gap-4 mt-8 pt-4 border-t border-gray-700">
                             <button
@@ -79,7 +70,6 @@ export default function BurgerMenu() {
                     )}
                 </div>
             </div>
-
             {!session && <AuthModal open={isModalOpen} onClose={() => setModalOpen(false)} type={authType} />}
         </>
     );

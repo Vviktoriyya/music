@@ -1,5 +1,3 @@
-
-
 export interface Album {
     id: number;
     title: string;
@@ -8,7 +6,6 @@ export interface Album {
     cover_big?: string;
     release_date?: string;
 }
-
 export interface Track {
     name: string;
     cover?: string;
@@ -27,12 +24,10 @@ export interface Track {
     release_date?: string | null;
     addedAt?: string;
 }
-
 export interface Artist {
     id: string;
     name: string;
 }
-
 export interface Recording {
     id: string;
     title: string;
@@ -45,10 +40,6 @@ export interface Recording {
     rank?: number;
     releaseDate?: string;
 }
-
-
-
-// Тип, який повертає useSearch()
 export interface SearchData {
     artists: Artist[];
     recordings: Recording[];

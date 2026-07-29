@@ -5,5 +5,4 @@ export interface Artist {
     picture_big: string;
     picture_xl: string;
     link?: string;
-
 }

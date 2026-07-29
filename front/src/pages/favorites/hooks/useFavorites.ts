@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { FavoritesContext } from "../context/FavoritesContext.tsx";
-
 export const useFavorites = () => {
     const context = useContext(FavoritesContext);
     if (!context) {

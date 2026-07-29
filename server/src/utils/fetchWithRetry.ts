@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export async function fetchWithRetry(url: string, params: any = {}, retries = 3): Promise<any> {
     for (let i = 0; i < retries; i++) {
         try {

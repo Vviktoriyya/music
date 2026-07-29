@@ -5,15 +5,12 @@ import TrackModal from "../../components/TrackModal.tsx";
 import type { PlaylistData, PlaylistTrack } from "../../../interfaces/PlaylistInfo.ts";
 import type { Track as AppTrack } from "../../types/track";
 import { getPlaylistById } from "../../service/playListMood.ts";
-
 export default function PlaylistPage() {
     const { id } = useParams<{ id: string }>();
-
     const [playlist, setPlaylist] = useState<PlaylistData | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [selectedTrack, setSelectedTrack] = useState<AppTrack | null>(null);
-
     useEffect(() => {
         if (!id) {
             setError("Playlist ID is missing.");
@@ -35,17 +32,14 @@ export default function PlaylistPage() {
         };
         void loadPlaylist();
     }, [id]);
-
     const formatDuration = (seconds?: number) => {
         if (seconds === undefined || seconds === null) return "—";
         const min = Math.floor(seconds / 60);
         const sec = seconds % 60;
         return `${min}:${sec.toString().padStart(2, "0")}`;
     };
-
     const mapToAppTrack = (t: PlaylistTrack): AppTrack => {
         const trackCover = t.album?.cover_medium ?? playlist?.picture_xl ?? "";
-
         return {
             id: t.id,
             title: t.title,
@@ -69,11 +63,9 @@ export default function PlaylistPage() {
             preview: t.preview ?? null,
         } as const;
     };
-
     if (loading) return <p className="text-center mt-10">Loading playlist...</p>;
     if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
     if (!playlist) return <p className="text-center mt-10">Playlist not found</p>;
-
     return (
         <div className="min-h-screen bg-black text-white">
             <Header />
@@ -90,7 +82,6 @@ export default function PlaylistPage() {
                         <p className="text-md text-gray-500 text-center max-w-lg mb-8">{playlist.description}</p>
                     )}
                 </div>
-
                 <div className="w-full max-w-5xl">
                     <h3 className="text-xl font-semibold mb-3 text-left text-white">Tracks</h3>
                     <table className="w-full text-white text-[16px] border-separate border-spacing-y-2">
@@ -107,7 +98,6 @@ export default function PlaylistPage() {
                         {playlist.tracks.data.map((track, idx) => (
                             <tr
                                 key={track.id}
-                                // ✅ ВИПРАВЛЕНО: Тепер сюди передається об'єкт правильного типу `PlaylistTrack`
                                 onClick={() => setSelectedTrack(mapToAppTrack(track))}
                                 className="cursor-pointer hover:bg-gray-800 transition-colors rounded-lg"
                             >
@@ -121,7 +111,6 @@ export default function PlaylistPage() {
                         </tbody>
                     </table>
                 </div>
-
                 {selectedTrack && (
                     <TrackModal track={selectedTrack} onClose={() => setSelectedTrack(null)} />
                 )}

@@ -1,13 +1,10 @@
 import axios from "axios";
-
 const API_URL = "http://localhost:5000";
-
 export type Genre = {
     id: number;
     name: string;
     picture: string;
 };
-
 export type Track = {
     id: number;
     title: string;
@@ -19,7 +16,6 @@ export type Track = {
     preview: string;
     rank: number;
 };
-
 export async function getGenres(): Promise<Genre[]> {
     try {
         const response = await axios.get(`${API_URL}/api/genres`);
@@ -29,7 +25,6 @@ export async function getGenres(): Promise<Genre[]> {
         return [];
     }
 }
-
 export async function getTracksByGenre(genreId: number, limit = 10): Promise<Track[]> {
     try {
         const response = await axios.get(`${API_URL}/api/genre/${genreId}/tracks`, {

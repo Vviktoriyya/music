@@ -2,7 +2,6 @@ export interface Artist {
     id: string;
     name: string;
 }
-
 export interface Recording {
     id: number | string;
     title: string;
@@ -14,11 +13,7 @@ export interface Recording {
     duration?: number;
     rank?: number;
     releaseDate?: string | null;
-
 }
-
-
-// Тип, який повертає useSearch()
 export interface SearchData {
     artists: Artist[];
     recordings: Recording[];
