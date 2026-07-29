@@ -9,7 +9,7 @@
 ---
 ## 📸 Вигляд застосунку
 
-![Music App Preview](./assets/melodiesHomePage.png)
+![Music App Preview](./assets/melodiesHomePage.jpg)
 # ✨ Можливості
 - Реєстрація/Вхід
 - 🔎 Пошук треків та виконавців
