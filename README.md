@@ -7,7 +7,9 @@
 🔗 https://music-henna-gamma.vercel.app/
 
 ---
+## 📸 Вигляд застосунку
 
+![Music App Preview](./assets/projectPreview.png)
 # ✨ Можливості
 - Реєстрація/Вхід
 - 🔎 Пошук треків та виконавців
