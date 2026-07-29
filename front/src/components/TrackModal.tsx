@@ -87,12 +87,19 @@ const TrackModal: React.FC<TrackModalProps> = ({ track, onClose }) => {
                 {(track?.full || track?.preview) && (
                     <div className="w-full flex flex-col items-center mt-2">
                         <AudioPlayer
-                            src={track?.full ?? track?.preview ?? undefined}
+                            src={track.full ?? track.preview ?? undefined}
+
+                            onPlay={() => console.log("PLAY START")}
+                            onPause={() => console.log("PAUSED")}
+                            onError={(e) => console.log("AUDIO ERROR", e)}
+
                             layout="stacked-reverse"
                             showSkipControls={false}
                             showJumpControls={false}
-                            autoPlayAfterSrcChange={true}
+                            autoPlayAfterSrcChange={false}
+
                             className="w-full rounded-xl audio-player-custom"
+
                             customAdditionalControls={[
                                 <div key="custom-controls" className="flex items-center gap-x-2">
                                     {favoriteButton}

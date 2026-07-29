@@ -84,8 +84,19 @@ export default function MiniPlayer() {
     const togglePlay = () => {
         const audio = audioPlayerRef.current?.audio.current;
         if (!audio) return;
-        if (audio.paused) audio.play().catch(console.error);
-        else audio.pause();
+        if (audio.paused) {
+            audio.play()
+                .then(() => {
+                    console.log("MiniPlayer playing");
+                    setIsPlaying(true);
+                })
+                .catch(err => {
+                    console.log("Mobile blocked:", err);
+                });
+        } else {
+            audio.pause();
+            setIsPlaying(false);
+        }
     };
 
     const handleSeek = (time: number) => {
