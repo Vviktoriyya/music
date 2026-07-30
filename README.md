@@ -10,6 +10,10 @@
 ## 📸 Вигляд застосунку
 
 ![Music App Preview](./assets/melodiesHomePage.jpg)
+
+## Макет Figma
+https://www.figma.com/design/xLl9h7UWwr65pN8gB7HUTL/Music-Player-Website---App--Melodies---Community-
+
 # ✨ Можливості
 - Реєстрація/Вхід
 - 🔎 Пошук треків та виконавців
